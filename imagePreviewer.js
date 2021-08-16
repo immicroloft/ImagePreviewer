@@ -2,8 +2,9 @@
 
 // 在 PTT 網頁版中
 // 每個 <a> 下方皆會自動生成一個 class 為 richcontent 的預覽框
-// 目前 i.imgur.com 的預覽框已可正常顯示
-// 僅剩 imgur.com 的預覽框需要修復
+// 目前 imgur.com 的預覽框仍然是壞的
+// i.imgur.com 的預覽框則因為官方持續改變作法而時好時壞
+// 因此暫且維持兩者都修復
 
 // 修改預設樣式，使每張圖片皆獨立佔用一行並置中
 const style = document.createElement('style')
@@ -16,9 +17,9 @@ style.textContent = `
 `
 document.head.append(style)
 
-// 用於篩選出包含 /imgur.com/ 但是並非 /imgur.com/a/ 的網址
+// 用於篩選出包含 imgur.com/ 但是並非 imgur.com/a/ 的網址
 // 並捕捉網址中的獨特辨識符
-const filter = /\/imgur\.com\/(?!a\/)([^./]+)/
+const filter = /imgur\.com\/(?!a\/)([^./]+)/
 
 // 用於儲存無法正常顯示的預覽框
 const containers = []
